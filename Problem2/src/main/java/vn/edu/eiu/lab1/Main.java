@@ -31,6 +31,17 @@ public class Main {
                 System.out.printf("|%4s|%-10s|%-10s|%4d|%4s|\n", rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5));
             }
 
+            //Truy vấn sử dụng tham ố truyền vào mệnh đề
+            //Insert dữ liệu vào bảng
+            String stringSQL = "INSERT INTO student VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement pstmt1 = conn.prepareStatement(stringSQL);
+            pstmt1.setString(1, "STD5");
+            pstmt1.setString(2, "Lan");
+            pstmt1.setString(3, "Truong");
+            pstmt1.setInt(4, 2001);
+            pstmt1.setDouble(5, 8.9);
+            pstmt1.executeUpdate();
+
             conn.close();
             System.out.println("Connection closed");
         } catch (Exception e) {
