@@ -40,7 +40,21 @@ public class Main {
             pstmt1.setString(3, "Truong");
             pstmt1.setInt(4, 2001);
             pstmt1.setDouble(5, 8.9);
-            pstmt1.executeUpdate();
+//            pstmt1.executeUpdate();
+
+            //Update điểm cho Lan lên 9.8
+            String updateSQL = "update student set GPA = ? where id = ?";
+            PreparedStatement pstmt2 = conn.prepareStatement(updateSQL);
+            pstmt2.setDouble(1, 9.8);
+            pstmt2.setString(2, "STD5");
+            int rowEffected = pstmt2.executeUpdate();
+            System.out.println(rowEffected + " rows affected");
+
+            //Delete sinh viên
+            String deleteSQL = "delete from student where id = ?";
+            PreparedStatement pstmt3 = conn.prepareStatement(deleteSQL);
+            pstmt3.setString(1, "STD5");
+//            pstmt3.executeUpdate();
 
             conn.close();
             System.out.println("Connection closed");
